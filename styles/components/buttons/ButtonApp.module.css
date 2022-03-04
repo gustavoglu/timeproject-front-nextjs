@@ -1,0 +1,11 @@
+.button_app {
+  width: 279.14px;
+  height: 53.68px;
+  left: 580px;
+  top: 564px;
+  color:white;
+  border:none;
+  font-weight: bold;
+  background: var(--color-primary);
+  border-radius: 40px;
+}

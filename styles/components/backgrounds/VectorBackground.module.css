@@ -1,0 +1,23 @@
+
+.vector_l {
+    position: absolute;
+    bottom: 0;
+}
+
+.vector_r {
+    position: absolute;
+    right: 0;
+}
+
+.page_background {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+}
+
+.children_content{
+    position: absolute;
+  
+    width: 100%;
+    height: 100%;
+}

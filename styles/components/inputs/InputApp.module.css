@@ -1,0 +1,32 @@
+.container{
+ display: flex;
+ flex-direction: column;
+ gap:10px;
+}
+
+.input_app {
+  width: 429.44px;
+  height: 52.21px;
+  left: 505px;
+  top: 341.33px;
+  padding-left: 20px;
+  background: #ffffff;
+  border: 1px solid #d3d3d3;
+  box-sizing: border-box;
+  border-radius: 20px;
+  font-family: "Roboto", sans-serif;
+
+}
+
+.input_app_label {
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+
+.input_app_label_required {
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  color: var(--color-primary)
+}
