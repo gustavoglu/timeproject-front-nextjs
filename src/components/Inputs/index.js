@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../styles/components/inputs/InputApp.module.css";
+import styles from "./styles.module.css";
 export default class InputApp extends React.Component {
   constructor(props) {
     super(props);

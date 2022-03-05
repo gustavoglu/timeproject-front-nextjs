@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "../../styles/components/titles/Title.module.css";
+import styles from "./styles.module.css";
 
 export default class Title extends React.Component {
   constructor(props) {

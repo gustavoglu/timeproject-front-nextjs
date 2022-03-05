@@ -1,10 +1,10 @@
 import Head from "next/head";
 import Link from "next/link";
-import styles from "../styles/pages/SignIn.module.css";
-import Title from "../components/titles/Title";
-import VectorBackground from "../components/backgrounds/VectorBackground";
-import InputApp from "../components/inputs/InputApp";
-import ButtonApp from "../components/buttons/ButtonApp";
+import styles from "./home.module.css";
+import Title from "../components/Titles/index";
+import VectorBackground from "../components/Backgrounds/index";
+import InputApp from "../components/Inputs";
+import ButtonApp from "../components/Buttons";
 import { useState } from "react";
 export default function Home() {
   const [email, setEmail] = useState("");

@@ -1,9 +1,9 @@
 import Head from "next/head";
-import styles from "../../styles/pages/SignUp.module.css";
-import Title from "../../components/titles/Title";
-import VectorBackground from "../../components/backgrounds/VectorBackground";
-import InputApp from "../../components/inputs/InputApp";
-import ButtonApp from "../../components/buttons/ButtonApp";
+import styles from "./styles.module.css";
+import Title from "../../components/Titles";
+import VectorBackground from "../../components/Backgrounds/index";
+import InputApp from "../../components/Inputs";
+import ButtonApp from "../../components/Buttons/index";
 import Link from "next/link";
 import { useState } from "react";
 export default function SignUp() {
