@@ -15,12 +15,12 @@ export default {
     return false;
   },
 
-  async getUserParams() {
-    return localStorage.getItem("userparams")
-  },
-
   async setUserParams(params) {
     await localStorage.setItem("userparams", params);
+  },
+  
+  async getUserParams() {
+    return localStorage.getItem("userparams");
   },
 
   async signUp(tenanty, email, name, password, confirmPassword) {
