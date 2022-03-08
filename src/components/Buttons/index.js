@@ -8,7 +8,7 @@ export default class ButtonApp extends React.Component {
   render() {
     return (
       <>
-        <button className={styles.button_app}>{this.props.children}</button>
+        <button {...this.props} className={styles.button_app}>{this.props.children}</button>
       </>
     );
   }
