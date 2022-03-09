@@ -6,18 +6,21 @@ import VectorBackground from "../components/Backgrounds/index";
 import InputApp from "../components/Inputs";
 import ButtonApp from "../components/Buttons";
 import { useState,useContext } from "react";
-import { LoadingContext } from "../contexts/LoadingContext"
-import ApiClient from "../api/client"
+import { useApiClient } from "../contexts/ApiClientContext"
+
 
 export default function Home() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { setLoading } = useContext(LoadingContext)
+  const { client, isBusy } = useApiClient()
 
   const testeRequest = async function(){
-    const res = await ApiClient.get("www.google.com.br")
-    console.log(res.status)
+    console.log(isBusy)
+    const res = await client.get("https://jsonplaceholder.typicode.com/photos")
+    console.log(res)
+    console.log(isBusy)
+    
   }
 
 

@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 
 export const LoadingContext = createContext({});
 
@@ -14,4 +14,8 @@ export function LoadingProvider({ children }) {
       {children}
     </LoadingContext.Provider>
   );
+}
+
+export  function useLoading() {
+  return useContext(LoadingContext);
 }

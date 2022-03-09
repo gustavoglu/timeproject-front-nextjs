@@ -1,11 +1,16 @@
 import "../styles/globals.css";
-import {LoadingProvider} from "../contexts/LoadingContext"
+import {
+  ApiClientProvider,
+  useApiClient,
+} from "../contexts/ApiClientContext";
 
 function MyApp({ Component, pageProps }) {
-  return(
-  <LoadingProvider>
-    <Component {...pageProps} />
-  </LoadingProvider>);
+  const { isBusy } = useApiClient();
+  return (
+    <ApiClientProvider>
+      {isBusy ? <div>...loading</div> : <Component {...pageProps} />}
+    </ApiClientProvider>
+  );
 }
 
 export default MyApp;
