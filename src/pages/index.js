@@ -5,24 +5,31 @@ import Title from "../components/Titles/index";
 import VectorBackground from "../components/Backgrounds/index";
 import InputApp from "../components/Inputs";
 import ButtonApp from "../components/Buttons";
-import { useState,useContext } from "react";
-import { useApiClient } from "../contexts/ApiClientContext"
-
+import { useState, useContext } from "react";
+import { useApiClient } from "../contexts/ApiClientContext";
+import { useSelector, useDispatch } from "react-redux";
+import { setLoading } from "../store/actions/loading";
 
 export default function Home() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { client, isBusy } = useApiClient()
+  const { client } = useApiClient();
 
-  const testeRequest = async function(){
-    console.log(isBusy)
-    const res = await client.get("https://jsonplaceholder.typicode.com/photos")
-    console.log(res)
-    console.log(isBusy)
-    
-  }
+  const { isLoading } = useSelector((state) => state.loading);
 
+  const dispatch = useDispatch();
+
+  const testeIsBusy = function () {
+    console.log("state loading:" + isLoading);
+    dispatch(setLoading(!isLoading));
+    console.log("state loading:" + isLoading);
+  };
+
+  const testeRequest = async function () {
+    const res = await client.get("https://jsonplaceholder.typicode.com/photos");
+    console.log(res);
+  };
 
   return (
     <div className={styles.container}>
@@ -50,7 +57,7 @@ export default function Home() {
               required
               onChange={(event) => setPassword(event.target.value)}
             ></InputApp>
-            <button onClick={()=>setLoading(true)}>teste</button>
+            <button onClick={testeIsBusy}>teste</button>
             <ButtonApp onClick={testeRequest}> Sign In</ButtonApp>
             <div className={styles.signup_container}>
               <div>Don’t have a account?</div>

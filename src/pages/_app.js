@@ -1,16 +1,18 @@
 import "../styles/globals.css";
-import {
-  ApiClientProvider,
-  useApiClient,
-} from "../contexts/ApiClientContext";
+import { storeWrapper } from "../store";
+import { useSelector } from "react-redux";
+import { ApiClientProvider } from "../contexts/ApiClientContext";
 
 function MyApp({ Component, pageProps }) {
-  const { isBusy } = useApiClient();
+  const { isLoading } = useSelector((state) => state.loading);
+
+  if (isLoading) return;
+
   return (
     <ApiClientProvider>
-      {isBusy ? <div>...loading</div> : <Component {...pageProps} />}
+      {isLoading ? <div>...loading</div> : <Component {...pageProps} />}
     </ApiClientProvider>
   );
 }
 
-export default MyApp;
+export default storeWrapper.withRedux(MyApp);

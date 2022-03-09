@@ -1,14 +1,18 @@
 import { createContext, useContext, useState } from "react";
 import client from "../api/client";
 import authService from "../services/AuthService";
+import {  useDispatch } from "react-redux";
+import { setLoading } from "../store/actions/loading";
 
 export const ApiClientContext = createContext({});
 
 export function ApiClientProvider({ children }) {
   const [isBusy, setIsBusy] = useState(false);
 
+  const dispatch = useDispatch();
   client.interceptors.request.use(async (request) => {
-    setIsBusy(true);
+    dispatch(setLoading(true));
+    console.log("context isbusy: " + isBusy);
 
     const params = await authService.getUserParams();
     if (params != null) {
@@ -19,11 +23,13 @@ export function ApiClientProvider({ children }) {
 
   client.interceptors.response.use(
     (response) => {
-      setIsBusy(false);
+      dispatch(setLoading(false));
+      console.log("context isbusy: " + isBusy);
       return response;
     },
     (error) => {
-      setIsBusy(false);
+      dispatch(setLoading(false));
+      console.log("context isbusy: " + isBusy);
       return error;
     }
   );
@@ -33,7 +39,7 @@ export function ApiClientProvider({ children }) {
   }
 
   return (
-    <ApiClientContext.Provider value={{ client, isBusy, getIsBusy }}>
+    <ApiClientContext.Provider value={{ client, isBusy, getIsBusy, setIsBusy }}>
       {children}
     </ApiClientContext.Provider>
   );
